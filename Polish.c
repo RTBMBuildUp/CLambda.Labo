@@ -18,7 +18,6 @@ int otoi(char operator)  {
 int main(void) {
 	int (*operation_array[4])(int, int);
 	int (**operation_array_p)(int, int) = operation_array;
-	int operation_array_length = sizeof(operation_array) / sizeof(operation_array[0]);
 	int stack[256] = {0};
 
 	int add(int f, int s) {
@@ -87,7 +86,6 @@ int main(void) {
 //	for (operation_array_p = operation_array; operation_array_p != &operation_array[operation_array_length]; operation_array_p++)
 //		printf("%d\n", operation_array[operation_array_p - &operation_array[0]](4, 2));
 	
-	int array[256];
 	char formula[256];
 	int result = 0;
 	
