@@ -1,16 +1,17 @@
 #include <stdio.h>
+#define Type int
 
-void foreach(int *this, int size, void (*lambda)(int*)) {
+void foreach(void *this, Type type, int size, void (*lambda)(int*)) {
 	if (size == 0) return;
-	lambda(this);
-	foreach(this+1, size-1, lambda);
+	lambda((int*)this);
+	foreach(this+type, type, size-1, lambda);
 }
 
 void increment(int *num) {
 	*num += 1;
 }
 
-#define foreach(array,func) foreach(array, sizeof(array) / sizeof(array[0]), func)
+#define foreach(array,func) foreach(array, sizeof(array[0]), sizeof(array) / sizeof(array[0]), func)
 
 int main(void) {
 	int array[5];
