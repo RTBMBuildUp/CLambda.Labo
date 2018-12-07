@@ -1,10 +1,11 @@
 #include <stdio.h>
 #define Type int
 
-void foreach(void *this, Type type, int size, void (*lambda)(int*)) {
+void foreach(void *this, Type type, int size, void (*func)(int*)) {
 	if (size == 0) return;
-	lambda((int*)this);
-	foreach(this+type, type, size-1, lambda);
+	if (type == sizeof(int))
+		func((int*)this);
+	foreach(this+type, type, size-1, func);
 }
 
 void increment(int *num) {
