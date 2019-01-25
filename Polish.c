@@ -44,26 +44,26 @@ int main(void) {
 		char ope_stack[256] = {'\0'};
 		int num_stack[256];
 		
-        int *num_stack_p = num_stack;
-        char *ope_stack_p = ope_stack;
-
-        while (1) {
-            char head = *formula++;
-            if (head == '\0') break;
-            if (&ope_stack[256] == ope_stack_p) {
-                // message
-                exit(2);
-            }
-            if (&num_stack[256] == num_stack_p) {
-                // message
-                exit(2);
-            }
-            if (isoperator(head)) {
-                *ope_stack_p++ = head;
-            } else {
-                *num_stack_p++ = ctoi(head);
-            }
-        }
+        	int *num_stack_p = num_stack;
+	        char *ope_stack_p = ope_stack;
+	
+        	while (1) {
+	            char head = *formula++;
+        	    if (head == '\0') break;
+	            if (&ope_stack[256] == ope_stack_p) {
+        	        // message
+                	exit(2);
+	            }
+        	    if (&num_stack[256] == num_stack_p) {
+	                // message
+        	        exit(2);
+	            }
+        	    if (isoperator(head)) {
+                	*ope_stack_p++ = head;
+	            } else {
+        	        *num_stack_p++ = ctoi(head);
+	            }
+        	}
 
 		while (1) {
 			if (--ope_stack_p == &ope_stack[-1]) break;
